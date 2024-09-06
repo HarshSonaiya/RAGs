@@ -1,0 +1,13 @@
+numpy
+scikit-learn
+pypdf
+chromadb
+torch
+rank_bm25
+bitsandbytes
+langchain
+langchain_community
+langchain_huggingface
+langchain_chroma
+transformers
+sentence_transformers
