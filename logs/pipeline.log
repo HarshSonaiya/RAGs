@@ -1,0 +1,60 @@
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are LSTMs ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are LSTMs?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are LSTMs?
+
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are LSTMs?
+
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are LSTMs?
+
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are LSTMs?
+
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are LSTMs ?
+Tokenizer and llm initialized successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are LSTMs ?
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain responses generated successfully.
+Hybrid Chain responses generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are Lstms ?
+
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain responses generated successfully.
+Hybrid Chain responses generated successfully.
+BM25 Chain responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are lstms?
+
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain generated successfully.
+Hybrid Chain generated successfully.
+BM25 Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are lstms?
+
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain generated successfully.
+Hybrid Chain generated successfully.
+BM25 Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are lstms?
+
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain generated successfully.
+Hybrid Chain generated successfully.
+BM25 Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are lstms?
+
+Tokenizer and llm initialized successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are lstms?
+
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain generated successfully.
+Hybrid Chain generated successfully.
+BM25 Chain generated successfully.
+RAG pipeline responses generated successfully.

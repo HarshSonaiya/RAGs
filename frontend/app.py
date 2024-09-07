@@ -1,5 +1,10 @@
 import streamlit as st
 import requests
+import logging
+from logging_config import get_logger
+
+# Initialize logger
+logger = get_logger("streamlit")
 
 # Title of the app
 st.title("RAG Pipeline PDF Processing and Comparison")
@@ -14,6 +19,7 @@ user_query = st.text_area("Optional: Enter a query (leave blank to use full PDF 
 if st.button("Submit"):
     if uploaded_pdf is None:
         st.warning("Please upload a PDF document.")
+        logger.warning("No PDF was uploaded by the user.")
     else:
         # Code to send the request to the backend
         with st.spinner("Processing your request..."):
@@ -28,10 +34,13 @@ if st.button("Submit"):
                     files=files,
                     data=data
                 )
+                logger.info("Request sent to FastAPI backend.")
 
                 # Process the response
                 if response.status_code == 200:
+
                     results = response.json()
+                    logger.info("Successful response received from FastAPI backend.")
 
                     # Extract different responses
                     result_dense = results.get("dense_response", "No dense retriever response")
@@ -54,5 +63,8 @@ if st.button("Submit"):
 
                 else:
                     st.error(f"Error: {response.status_code} - {response.text}")
+                    logger.error(f"Error: {response.status_code} - {response.text}")
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
+                logger.exception(f"An error occurred: {e}")
+

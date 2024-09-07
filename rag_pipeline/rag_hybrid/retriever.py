@@ -14,13 +14,13 @@ def extract_content_from_pdf(file: str) -> List:
     chunks = splitter.split_documents(docs)
     return chunks
 
-def setup_retrievers(docs, model_name):
+def setup_retrievers(docs, embedding_model_name):
 
     docs_content = [doc.page_content for doc in docs]
-    bm25_retriever = BM25Retriever(docs_content)
+    bm25_retriever = BM25Retriever.from_documents(docs)
 
     # Dense retriever setup (vectorstore_retriever)
-    embeddings = HuggingFaceEmbeddings(model_name=model_name)
+    embeddings = HuggingFaceEmbeddings(model_name=embedding_model_name)
     vector_store = Chroma(
         collection_name="collection1",
         embedding_function=embeddings,

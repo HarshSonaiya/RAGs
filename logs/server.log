@@ -1,0 +1,501 @@
+Received file: LSTM.pdf and query: What are LSTMs ?
+An error occurred while processing RAG pipeline: No GPU found. A GPU is needed for quantization.
+Traceback (most recent call last):
+  File "D:\Projects\RAGs\backend\server.py", line 25, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\generator.py", line 25, in process_rag_pipeline
+    llm = create_pipeline(model_name, tokenizer)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 19, in create_pipeline
+    model = load_quantized_model(model_name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 12, in load_quantized_model
+    model = AutoModelForCausalLM.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\models\auto\auto_factory.py", line 564, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\modeling_utils.py", line 3398, in from_pretrained
+    hf_quantizer.validate_environment(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\quantizers\quantizer_bnb_4bit.py", line 62, in validate_environment
+    raise RuntimeError("No GPU found. A GPU is needed for quantization.")
+RuntimeError: No GPU found. A GPU is needed for quantization.
+Received file: LSTM.pdf and query: What are LSTMs?
+An error occurred while processing RAG pipeline: Using `bitsandbytes` 4-bit quantization requires Accelerate: `pip install accelerate`
+Traceback (most recent call last):
+  File "D:\Projects\RAGs\backend\server.py", line 25, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\generator.py", line 25, in process_rag_pipeline
+    llm = create_pipeline(model_name, tokenizer)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 19, in create_pipeline
+    model = load_quantized_model(model_name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 12, in load_quantized_model
+    model = AutoModelForCausalLM.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\models\auto\auto_factory.py", line 564, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\modeling_utils.py", line 3398, in from_pretrained
+    hf_quantizer.validate_environment(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\quantizers\quantizer_bnb_4bit.py", line 64, in validate_environment
+    raise ImportError("Using `bitsandbytes` 4-bit quantization requires Accelerate: `pip install accelerate`")
+ImportError: Using `bitsandbytes` 4-bit quantization requires Accelerate: `pip install accelerate`
+Received file: LSTM.pdf and query: What are LSTMs?
+
+An error occurred while processing RAG pipeline: (MaxRetryError('HTTPSConnectionPool(host=\'cdn-lfs-us-1.huggingface.co\', port=443): Max retries exceeded with url: /repos/d9/3d/d93d0ae44e3930a5eb272129c6a12ccec827e219c3d5ba5474ae9ddf3b4b7647/d0ce3cc66d224a0e6014a1df6b7e56da29f5db52da1866ad0cc07d7583fb7c31?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model-00005-of-00008.safetensors%3B+filename%3D%22model-00005-of-00008.safetensors%22%3B&Expires=1725950991&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyNTk1MDk5MX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2Q5LzNkL2Q5M2QwYWU0NGUzOTMwYTVlYjI3MjEyOWM2YTEyY2NlYzgyN2UyMTljM2Q1YmE1NDc0YWU5ZGRmM2I0Yjc2NDcvZDBjZTNjYzY2ZDIyNGEwZTYwMTRhMWRmNmI3ZTU2ZGEyOWY1ZGI1MmRhMTg2NmFkMGNjMDdkNzU4M2ZiN2MzMT9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=FKpXqcQiknCpgRWp8ONmfba195Q-Hnp1wdFzbBYsDGd719lwii2NJYm2ECmzR0BDBxj7It3UtakKGBbxcDWYy-FLkuRg8rE7F-rTRVHfUONh5JWOyEnP9pHUbaddWMsXiowHcaUBojJfd49h~zxIkSakCpFIphIEFIdIYYuM8ch~FAdWLLrOS~tpjydLzV6maeAxiAnq5gYHDT4xCsLb3KbXolYUvuIox6HJ9iSdVfwb4kefQBGPDmhgMWzBOUBvaq4LQ~fNR0x7V~MR7D0A-0B5LXLiJw6PcS3-B8FUk4uglu-D4gbDtitn3WBviEdAGPCHMzrmrEznBq-3~oYn7w__&Key-Pair-Id=K24J24Z295AEI9 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002C3B2A36A20>: Failed to resolve \'cdn-lfs-us-1.huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 36a08e1d-47c9-48eb-b863-95c129f8f3c4)')
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 712, in _error_catcher
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 812, in _raw_read
+    data = self._fp_read(amt) if not fp_closed else b""
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 797, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+        ^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\ssl.py", line 1252, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\ssl.py", line 1104, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\models.py", line 816, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 934, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 877, in read
+    data = self._raw_read(amt)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 811, in _raw_read
+    with self._error_catcher():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 717, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.") from e  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='cdn-lfs-us-1.huggingface.co', port=443): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 549, in http_get
+    for chunk in r.iter_content(chunk_size=DOWNLOAD_CHUNK_SIZE):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\models.py", line 822, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='cdn-lfs-us-1.huggingface.co', port=443): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 1096, in _validate_conn
+    conn.connect()
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000002C3B2A36A20>: Failed to resolve 'cdn-lfs-us-1.huggingface.co' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='cdn-lfs-us-1.huggingface.co', port=443): Max retries exceeded with url: /repos/d9/3d/d93d0ae44e3930a5eb272129c6a12ccec827e219c3d5ba5474ae9ddf3b4b7647/d0ce3cc66d224a0e6014a1df6b7e56da29f5db52da1866ad0cc07d7583fb7c31?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model-00005-of-00008.safetensors%3B+filename%3D%22model-00005-of-00008.safetensors%22%3B&Expires=1725950991&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyNTk1MDk5MX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2Q5LzNkL2Q5M2QwYWU0NGUzOTMwYTVlYjI3MjEyOWM2YTEyY2NlYzgyN2UyMTljM2Q1YmE1NDc0YWU5ZGRmM2I0Yjc2NDcvZDBjZTNjYzY2ZDIyNGEwZTYwMTRhMWRmNmI3ZTU2ZGEyOWY1ZGI1MmRhMTg2NmFkMGNjMDdkNzU4M2ZiN2MzMT9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=FKpXqcQiknCpgRWp8ONmfba195Q-Hnp1wdFzbBYsDGd719lwii2NJYm2ECmzR0BDBxj7It3UtakKGBbxcDWYy-FLkuRg8rE7F-rTRVHfUONh5JWOyEnP9pHUbaddWMsXiowHcaUBojJfd49h~zxIkSakCpFIphIEFIdIYYuM8ch~FAdWLLrOS~tpjydLzV6maeAxiAnq5gYHDT4xCsLb3KbXolYUvuIox6HJ9iSdVfwb4kefQBGPDmhgMWzBOUBvaq4LQ~fNR0x7V~MR7D0A-0B5LXLiJw6PcS3-B8FUk4uglu-D4gbDtitn3WBviEdAGPCHMzrmrEznBq-3~oYn7w__&Key-Pair-Id=K24J24Z295AEI9 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002C3B2A36A20>: Failed to resolve 'cdn-lfs-us-1.huggingface.co' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAGs\backend\server.py", line 25, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\generator.py", line 25, in process_rag_pipeline
+    llm = create_pipeline(model_name, tokenizer)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 19, in create_pipeline
+    model = load_quantized_model(model_name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 12, in load_quantized_model
+    model = AutoModelForCausalLM.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\models\auto\auto_factory.py", line 564, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\modeling_utils.py", line 3715, in from_pretrained
+    resolved_archive_file, sharded_metadata = get_checkpoint_shard_files(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\utils\hub.py", line 1079, in get_checkpoint_shard_files
+    cached_filename = cached_file(
+                      ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\utils\hub.py", line 402, in cached_file
+    resolved_file = hf_hub_download(
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_deprecation.py", line 101, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1240, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1389, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1915, in _download_to_tmp_and_move
+    http_get(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 566, in http_get
+    return http_get(
+           ^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 463, in http_get
+    r = _request_wrapper(
+        ^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 399, in _request_wrapper
+    response = get_session().request(method=method, url=url, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_http.py", line 66, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: (MaxRetryError('HTTPSConnectionPool(host=\'cdn-lfs-us-1.huggingface.co\', port=443): Max retries exceeded with url: /repos/d9/3d/d93d0ae44e3930a5eb272129c6a12ccec827e219c3d5ba5474ae9ddf3b4b7647/d0ce3cc66d224a0e6014a1df6b7e56da29f5db52da1866ad0cc07d7583fb7c31?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model-00005-of-00008.safetensors%3B+filename%3D%22model-00005-of-00008.safetensors%22%3B&Expires=1725950991&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyNTk1MDk5MX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2Q5LzNkL2Q5M2QwYWU0NGUzOTMwYTVlYjI3MjEyOWM2YTEyY2NlYzgyN2UyMTljM2Q1YmE1NDc0YWU5ZGRmM2I0Yjc2NDcvZDBjZTNjYzY2ZDIyNGEwZTYwMTRhMWRmNmI3ZTU2ZGEyOWY1ZGI1MmRhMTg2NmFkMGNjMDdkNzU4M2ZiN2MzMT9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=FKpXqcQiknCpgRWp8ONmfba195Q-Hnp1wdFzbBYsDGd719lwii2NJYm2ECmzR0BDBxj7It3UtakKGBbxcDWYy-FLkuRg8rE7F-rTRVHfUONh5JWOyEnP9pHUbaddWMsXiowHcaUBojJfd49h~zxIkSakCpFIphIEFIdIYYuM8ch~FAdWLLrOS~tpjydLzV6maeAxiAnq5gYHDT4xCsLb3KbXolYUvuIox6HJ9iSdVfwb4kefQBGPDmhgMWzBOUBvaq4LQ~fNR0x7V~MR7D0A-0B5LXLiJw6PcS3-B8FUk4uglu-D4gbDtitn3WBviEdAGPCHMzrmrEznBq-3~oYn7w__&Key-Pair-Id=K24J24Z295AEI9 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002C3B2A36A20>: Failed to resolve \'cdn-lfs-us-1.huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 36a08e1d-47c9-48eb-b863-95c129f8f3c4)')
+Received file: LSTM.pdf and query: What are LSTMs?
+
+An error occurred while processing RAG pipeline: (MaxRetryError('HTTPSConnectionPool(host=\'cdn-lfs-us-1.huggingface.co\', port=443): Max retries exceeded with url: /repos/d9/3d/d93d0ae44e3930a5eb272129c6a12ccec827e219c3d5ba5474ae9ddf3b4b7647/b0e0a3c0b992925ff9a60f1234950af0bcc7ce3015c8a386a342489e76f5d09c?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model-00007-of-00008.safetensors%3B+filename%3D%22model-00007-of-00008.safetensors%22%3B&Expires=1725951476&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyNTk1MTQ3Nn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2Q5LzNkL2Q5M2QwYWU0NGUzOTMwYTVlYjI3MjEyOWM2YTEyY2NlYzgyN2UyMTljM2Q1YmE1NDc0YWU5ZGRmM2I0Yjc2NDcvYjBlMGEzYzBiOTkyOTI1ZmY5YTYwZjEyMzQ5NTBhZjBiY2M3Y2UzMDE1YzhhMzg2YTM0MjQ4OWU3NmY1ZDA5Yz9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=iwkQzEgFw2lAUuKVeX0VEy6Yk4Au-xWA-ygEA~dMq9fCEB0~dgmfMRT~R0ZFemCGx-8ux8hQQh3jQ3dmXmXCzfKpHIlspBGGn4vjO9Z4noA8iDG-2cjE~ZgEL98jZJcS3jffM3jWgIJbh4TXGxoMiJd7AHvql3YbH1RUNDnaw7O8z2SumazfjX77wu6UlIdikvhpv14GMzfq3jJs~ThHO86Vg1fYHFYkj9WYXOGcRw3XrS5wCm1qOD7aw6YRt0h6ShBLCat8DLBVeKick02DwGgGm4toZZzUCaH4XzliDBNiHAYFYMinTq7dKV1zVbcwGG9bFOw8dXd9G6-kq2YvDw__&Key-Pair-Id=K24J24Z295AEI9 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002C3B2519070>: Failed to resolve \'cdn-lfs-us-1.huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 23b1965e-b27c-4d78-bf7d-136857c23dd4)')
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 712, in _error_catcher
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 812, in _raw_read
+    data = self._fp_read(amt) if not fp_closed else b""
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 797, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+        ^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\ssl.py", line 1252, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\ssl.py", line 1104, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\models.py", line 816, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 934, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 877, in read
+    data = self._raw_read(amt)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 811, in _raw_read
+    with self._error_catcher():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 717, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.") from e  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='cdn-lfs-us-1.huggingface.co', port=443): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 549, in http_get
+    for chunk in r.iter_content(chunk_size=DOWNLOAD_CHUNK_SIZE):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\models.py", line 822, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='cdn-lfs-us-1.huggingface.co', port=443): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 1096, in _validate_conn
+    conn.connect()
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000002C3B2519070>: Failed to resolve 'cdn-lfs-us-1.huggingface.co' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='cdn-lfs-us-1.huggingface.co', port=443): Max retries exceeded with url: /repos/d9/3d/d93d0ae44e3930a5eb272129c6a12ccec827e219c3d5ba5474ae9ddf3b4b7647/b0e0a3c0b992925ff9a60f1234950af0bcc7ce3015c8a386a342489e76f5d09c?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model-00007-of-00008.safetensors%3B+filename%3D%22model-00007-of-00008.safetensors%22%3B&Expires=1725951476&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyNTk1MTQ3Nn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2Q5LzNkL2Q5M2QwYWU0NGUzOTMwYTVlYjI3MjEyOWM2YTEyY2NlYzgyN2UyMTljM2Q1YmE1NDc0YWU5ZGRmM2I0Yjc2NDcvYjBlMGEzYzBiOTkyOTI1ZmY5YTYwZjEyMzQ5NTBhZjBiY2M3Y2UzMDE1YzhhMzg2YTM0MjQ4OWU3NmY1ZDA5Yz9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=iwkQzEgFw2lAUuKVeX0VEy6Yk4Au-xWA-ygEA~dMq9fCEB0~dgmfMRT~R0ZFemCGx-8ux8hQQh3jQ3dmXmXCzfKpHIlspBGGn4vjO9Z4noA8iDG-2cjE~ZgEL98jZJcS3jffM3jWgIJbh4TXGxoMiJd7AHvql3YbH1RUNDnaw7O8z2SumazfjX77wu6UlIdikvhpv14GMzfq3jJs~ThHO86Vg1fYHFYkj9WYXOGcRw3XrS5wCm1qOD7aw6YRt0h6ShBLCat8DLBVeKick02DwGgGm4toZZzUCaH4XzliDBNiHAYFYMinTq7dKV1zVbcwGG9bFOw8dXd9G6-kq2YvDw__&Key-Pair-Id=K24J24Z295AEI9 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002C3B2519070>: Failed to resolve 'cdn-lfs-us-1.huggingface.co' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAGs\backend\server.py", line 25, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\generator.py", line 25, in process_rag_pipeline
+    llm = create_pipeline(model_name, tokenizer)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 19, in create_pipeline
+    model = load_quantized_model(model_name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 12, in load_quantized_model
+    model = AutoModelForCausalLM.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\models\auto\auto_factory.py", line 564, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\modeling_utils.py", line 3715, in from_pretrained
+    resolved_archive_file, sharded_metadata = get_checkpoint_shard_files(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\utils\hub.py", line 1079, in get_checkpoint_shard_files
+    cached_filename = cached_file(
+                      ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\utils\hub.py", line 402, in cached_file
+    resolved_file = hf_hub_download(
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_deprecation.py", line 101, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1240, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1389, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1915, in _download_to_tmp_and_move
+    http_get(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 566, in http_get
+    return http_get(
+           ^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 463, in http_get
+    r = _request_wrapper(
+        ^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 399, in _request_wrapper
+    response = get_session().request(method=method, url=url, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_http.py", line 66, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: (MaxRetryError('HTTPSConnectionPool(host=\'cdn-lfs-us-1.huggingface.co\', port=443): Max retries exceeded with url: /repos/d9/3d/d93d0ae44e3930a5eb272129c6a12ccec827e219c3d5ba5474ae9ddf3b4b7647/b0e0a3c0b992925ff9a60f1234950af0bcc7ce3015c8a386a342489e76f5d09c?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model-00007-of-00008.safetensors%3B+filename%3D%22model-00007-of-00008.safetensors%22%3B&Expires=1725951476&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyNTk1MTQ3Nn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2Q5LzNkL2Q5M2QwYWU0NGUzOTMwYTVlYjI3MjEyOWM2YTEyY2NlYzgyN2UyMTljM2Q1YmE1NDc0YWU5ZGRmM2I0Yjc2NDcvYjBlMGEzYzBiOTkyOTI1ZmY5YTYwZjEyMzQ5NTBhZjBiY2M3Y2UzMDE1YzhhMzg2YTM0MjQ4OWU3NmY1ZDA5Yz9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=iwkQzEgFw2lAUuKVeX0VEy6Yk4Au-xWA-ygEA~dMq9fCEB0~dgmfMRT~R0ZFemCGx-8ux8hQQh3jQ3dmXmXCzfKpHIlspBGGn4vjO9Z4noA8iDG-2cjE~ZgEL98jZJcS3jffM3jWgIJbh4TXGxoMiJd7AHvql3YbH1RUNDnaw7O8z2SumazfjX77wu6UlIdikvhpv14GMzfq3jJs~ThHO86Vg1fYHFYkj9WYXOGcRw3XrS5wCm1qOD7aw6YRt0h6ShBLCat8DLBVeKick02DwGgGm4toZZzUCaH4XzliDBNiHAYFYMinTq7dKV1zVbcwGG9bFOw8dXd9G6-kq2YvDw__&Key-Pair-Id=K24J24Z295AEI9 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002C3B2519070>: Failed to resolve \'cdn-lfs-us-1.huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: 23b1965e-b27c-4d78-bf7d-136857c23dd4)')
+Received file: LSTM.pdf and query: What are LSTMs?
+
+An error occurred while processing RAG pipeline: ('Connection broken: IncompleteRead(1057980702 bytes read, 324112426 more expected)', IncompleteRead(1057980702 bytes read, 324112426 more expected))
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 712, in _error_catcher
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 833, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(1057980702 bytes read, 324112426 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\models.py", line 816, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 934, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 905, in read
+    data = self._raw_read(amt)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 811, in _raw_read
+    with self._error_catcher():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 729, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(1057980702 bytes read, 324112426 more expected)', IncompleteRead(1057980702 bytes read, 324112426 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAGs\backend\server.py", line 25, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\generator.py", line 25, in process_rag_pipeline
+    llm = create_pipeline(model_name, tokenizer)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 19, in create_pipeline
+    model = load_quantized_model(model_name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 12, in load_quantized_model
+    model = AutoModelForCausalLM.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\models\auto\auto_factory.py", line 564, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\modeling_utils.py", line 3715, in from_pretrained
+    resolved_archive_file, sharded_metadata = get_checkpoint_shard_files(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\utils\hub.py", line 1079, in get_checkpoint_shard_files
+    cached_filename = cached_file(
+                      ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\utils\hub.py", line 402, in cached_file
+    resolved_file = hf_hub_download(
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_deprecation.py", line 101, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1240, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1389, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1915, in _download_to_tmp_and_move
+    http_get(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 549, in http_get
+    for chunk in r.iter_content(chunk_size=DOWNLOAD_CHUNK_SIZE):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\models.py", line 818, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(1057980702 bytes read, 324112426 more expected)', IncompleteRead(1057980702 bytes read, 324112426 more expected))
+Received file: LSTM.pdf and query: What are LSTMs?
+
+An error occurred while processing RAG pipeline: `.to` is not supported for `4-bit` or `8-bit` bitsandbytes models. Please use the model as it is, since the model has already been set to the correct devices and casted to the correct `dtype`.
+Traceback (most recent call last):
+  File "D:\Projects\RAGs\backend\server.py", line 25, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\generator.py", line 25, in process_rag_pipeline
+    llm = create_pipeline(model_name, tokenizer)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 19, in create_pipeline
+    model = load_quantized_model(model_name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\model.py", line 15, in load_quantized_model
+    ).to("cuda")  # Load model on GPU
+      ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\accelerate\big_modeling.py", line 457, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\modeling_utils.py", line 2883, in to
+    raise ValueError(
+ValueError: `.to` is not supported for `4-bit` or `8-bit` bitsandbytes models. Please use the model as it is, since the model has already been set to the correct devices and casted to the correct `dtype`.
+Received file: LSTM.pdf and query: What are LSTMs ?
+An error occurred while processing RAG pipeline: BaseModel.__init__() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "D:\Projects\RAGs\backend\server.py", line 25, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\generator.py", line 29, in process_rag_pipeline
+    vectorstore_retriever, ensemble_retriever, bm25_retriever = setup_retrievers(docs, embedding_model_name)
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAGs\rag_pipeline\rag_hybrid\retriever.py", line 20, in setup_retrievers
+    bm25_retriever = BM25Retriever(docs_content)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\load\serializable.py", line 113, in __init__
+    super().__init__(*args, **kwargs)
+TypeError: BaseModel.__init__() takes 1 positional argument but 2 were given
+Received file: LSTM.pdf and query: What are LSTMs ?
+RAG pipeline processing completed successfully.
+Received file: LSTM.pdf and query: What are Lstms ?
+
+Received file: LSTM.pdf and query: What are lstms?
+
+RAG pipeline processing completed successfully.
+Received file: LSTM.pdf and query: What are lstms?
+
+RAG pipeline processing completed successfully.
+Received file: LSTM.pdf and query: What are lstms?
+
+RAG pipeline processing completed successfully.
+Received file: LSTM.pdf and query: What are lstms?
+
+Received file: LSTM.pdf and query: What are lstms?
+
+RAG pipeline processing completed successfully.

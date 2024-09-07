@@ -1,5 +1,5 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline, BitsAndBytesConfig
-from langchain import HuggingFacePipeline
+from langchain_huggingface import HuggingFacePipeline
 
 def initialize_tokenizer(model_name: str):
     tokenizer = AutoTokenizer.from_pretrained(model_name, return_token_type_ids=False)
@@ -12,7 +12,7 @@ def load_quantized_model(model_name: str):
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
         quantization_config=quantization_config
-    ).to("cuda")  # Load model on GPU
+    )
     return model
 
 def create_pipeline(model_name: str, tokenizer):
