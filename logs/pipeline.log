@@ -58,3 +58,37 @@ Normal Chain generated successfully.
 Hybrid Chain generated successfully.
 BM25 Chain generated successfully.
 RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: Lstms ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: Lstms ?
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain generated successfully.
+Hybrid Chain generated successfully.
+BM25 Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: Lstms ?
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain generated successfully.
+Hybrid Chain generated successfully.
+BM25 Chain generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: Lstms ?
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain generated successfully.
+Hybrid Chain generated successfully.
+BM25 Chain generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Tokenizer and llm initialized successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: Lstms ?
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain generated successfully.
+Hybrid Chain generated successfully.
+BM25 Chain generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: LSTMS ?
+Tokenizer and llm initialized successfully.
+Retrievers created successfully.
+Normal Chain generated successfully.
+Hybrid Chain generated successfully.
+BM25 Chain generated successfully.

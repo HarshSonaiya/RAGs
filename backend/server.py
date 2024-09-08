@@ -1,4 +1,3 @@
-import logging
 from logging_config import get_logger
 from fastapi import FastAPI, File, UploadFile, Form
 from rag_pipeline.rag_hybrid.generator import process_rag_pipeline

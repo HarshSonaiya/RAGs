@@ -499,3 +499,124 @@ Received file: LSTM.pdf and query: What are lstms?
 Received file: LSTM.pdf and query: What are lstms?
 
 RAG pipeline processing completed successfully.
+Received file: LSTM.pdf and query: Lstms ?
+An error occurred while processing RAG pipeline: ('Connection broken: IncompleteRead(609231011 bytes read, 1280356029 more expected)', IncompleteRead(609231011 bytes read, 1280356029 more expected))
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 712, in _error_catcher
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 833, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(609231011 bytes read, 1280356029 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\models.py", line 820, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 934, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 905, in read
+    data = self._raw_read(amt)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 811, in _raw_read
+    with self._error_catcher():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\urllib3\response.py", line 729, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(609231011 bytes read, 1280356029 more expected)', IncompleteRead(609231011 bytes read, 1280356029 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 24, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\rag_hybrid\generator.py", line 26, in process_rag_pipeline
+    llm = create_pipeline(model_name, tokenizer)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\rag_hybrid\model.py", line 19, in create_pipeline
+    model = load_quantized_model(model_name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\rag_hybrid\model.py", line 12, in load_quantized_model
+    model = AutoModelForCausalLM.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\models\auto\auto_factory.py", line 564, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\modeling_utils.py", line 3715, in from_pretrained
+    resolved_archive_file, sharded_metadata = get_checkpoint_shard_files(
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\utils\hub.py", line 1079, in get_checkpoint_shard_files
+    cached_filename = cached_file(
+                      ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\transformers\utils\hub.py", line 402, in cached_file
+    resolved_file = hf_hub_download(
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_deprecation.py", line 101, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1240, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1389, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 1915, in _download_to_tmp_and_move
+    http_get(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\huggingface_hub\file_download.py", line 549, in http_get
+    for chunk in r.iter_content(chunk_size=DOWNLOAD_CHUNK_SIZE):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\requests\models.py", line 822, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(609231011 bytes read, 1280356029 more expected)', IncompleteRead(609231011 bytes read, 1280356029 more expected))
+Received file: LSTM.pdf and query: Lstms ?
+RAG pipeline processing completed successfully.
+Received file: LSTM.pdf and query: Lstms ?
+An error occurred while processing RAG pipeline: object dict can't be used in 'await' expression
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 24, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\rag_hybrid\generator.py", line 52, in process_rag_pipeline
+    response4 = await evaluation(llm, embedding_model_name, docs, [normal_chain, hybrid_chain, bm25_chain] )
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 53, in evaluation
+    response = await chain.invoke(question)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object dict can't be used in 'await' expression
+Received file: LSTM.pdf and query: Lstms ?
+An error occurred while processing RAG pipeline: 'RetrievalQA' object has no attribute 'get_relevant_documents'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 24, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\rag_hybrid\generator.py", line 52, in process_rag_pipeline
+    response4 = await evaluation(llm, embedding_model_name, docs, hybrid_chain )
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 62, in evaluation
+    contexts.append([docs.page_content for docs in chains.get_relevant_documents(question)])
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'RetrievalQA' object has no attribute 'get_relevant_documents'
+Received file: LSTM.pdf and query: lstms ?
+Received file: LSTM.pdf and query: Lstms ?
+Received file: LSTM.pdf and query: LSTMS ?
+An error occurred while processing RAG pipeline: 'dict' object has no attribute 'dtype'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 24, in ragas_endpoint
+    result = await process_rag_pipeline(temp_file_path, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\rag_hybrid\generator.py", line 99, in process_rag_pipeline
+    result = evaluate(
+             ^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\_analytics.py", line 129, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\evaluation.py", line 165, in evaluate
+    validate_column_dtypes(dataset)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\validation.py", line 45, in validate_column_dtypes
+    if ds.features[column_names].dtype != "string":
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'dtype'
