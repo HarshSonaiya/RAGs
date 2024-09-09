@@ -12,3 +12,5 @@ langchain_huggingface
 langchain_chroma
 transformers
 sentence_transformers
+qdrant-client
+qdrant-client[langchain]

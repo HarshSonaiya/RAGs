@@ -39,8 +39,8 @@ async def process_rag_pipeline(file: str, query: str = Form(None)) -> Dict:
     else:
         logger.warning("No documents extracted from PDF.")
         return {'message': "Invalid File"}
-
-    model_name = "HuggingFaceH4/zephyr-7b-beta"
+    #
+    model_name = "hpcai-tech/grok-1"
     embedding_model_name="sentence-transformers/all-mpnet-base-v2"
 
     tokenizer = initialize_tokenizer(model_name)
@@ -67,12 +67,12 @@ async def process_rag_pipeline(file: str, query: str = Form(None)) -> Dict:
     )
     logger.info("BM25 Chain generated successfully.")
 
-    # response1 = normal_chain.invoke(query)
-    # response2 = hybrid_chain.invoke(query)
-    # response3 = bm25_chain.invoke(query)
+    response1 = normal_chain.invoke(query)
+    response2 = hybrid_chain.invoke(query)
+    response3 = bm25_chain.invoke(query)
 
-    answers = []
-    contexts = []
+    # answers = []
+    # contexts = []
 
     # for chain in chains:
     #     chain_results = []
@@ -81,53 +81,53 @@ async def process_rag_pipeline(file: str, query: str = Form(None)) -> Dict:
     #         chain_results.append((question, response))
     #         contexts.append([docs.page_content for docs in chain.get_relevant_documents(question)])
     #
-    #     results.append(chain_results)
-    for question in questions:
-        answers.append(hybrid_chain.invoke(question))
-        contexts.append([docs.page_content for docs in ensemble_retriever.invoke(question)])
-
-    # Preparing the dataset
-    data = {
-        "question": questions,
-        "answer": answers,
-        "contexts": contexts,
-        "ground_truth": ground_truth
-    }
-
-    dataset = Dataset.from_dict(data)
-
-    result = evaluate(
-        dataset=dataset,
-        metrics=[
-            context_precision,
-            context_recall,
-            faithfulness,
-            answer_relevancy,
-        ],
-    )
+    # #     results.append(chain_results)
+    # for question in questions:
+    #     answers.append(hybrid_chain.invoke(question))
+    #     contexts.append([docs.page_content for docs in ensemble_retriever.invoke(question)])
     #
-    # response = []
-    # for i, chain_results in enumerate(results):
-    #     dataset = dataset
-    #     result = evaluate(
-    #         dataset=dataset,
-    #         metrics=[context_precision, context_recall, faithfulness, answer_relevancy],
-    #     )
-    #     print(f"RAG Chain {i + 1} Results:")
-    #     print(result)
-    #     response.append(result)
-
-    logger.info("RAGAs evaluation completed successfully.")
-
-    response4 = result
-
+    # # Preparing the dataset
+    # data = {
+    #     "question": questions,
+    #     "answer": answers,
+    #     "contexts": contexts,
+    #     "ground_truth": ground_truth
+    # }
+    #
+    # dataset = Dataset.from_dict(data)
+    #
+    # result = evaluate(
+    #     dataset=dataset,
+    #     metrics=[
+    #         context_precision,
+    #         context_recall,
+    #         faithfulness,
+    #         answer_relevancy,
+    #     ],
+    # )
+    # #
+    # # response = []
+    # # for i, chain_results in enumerate(results):
+    # #     dataset = dataset
+    # #     result = evaluate(
+    # #         dataset=dataset,
+    # #         metrics=[context_precision, context_recall, faithfulness, answer_relevancy],
+    # #     )
+    # #     print(f"RAG Chain {i + 1} Results:")
+    # #     print(result)
+    # #     response.append(result)
+    #
+    # logger.info("RAGAs evaluation completed successfully.")
+    #
+    # response4 = result
+    #
     logger.info("RAG pipeline responses generated successfully.")
 
     return {
-        # "sparse_response": response3.get("result"),
-        # "dense_response": response1.get("result"),
-        # "hybrid_response": response2.get("result"),
-        "ragas_comparison": response4
+        "sparse_response": response3.get("result"),
+        "dense_response": response1.get("result"),
+        "hybrid_response": response2.get("result"),
+        "ragas_comparison": "No response"
     }
 
 
@@ -158,3 +158,18 @@ async def process_rag_pipeline(file: str, query: str = Form(None)) -> Dict:
 # async def evaluation(model, embedding_model, docs, chains):
 #
 #     return result.to_pandas()
+# async def generate_response() :
+#     client = xai_sdk.Client()
+#
+#     conversation = client.chat.create_conversation()
+#
+#     user_input =
+#     token_stream, _ = conversation.add_response(user_input)
+#         print("Grok: ", end="")
+#         async for token in token_stream:
+#             print(token, end="")
+#             sys.stdout.flush()
+#         print("\n")
+
+
+

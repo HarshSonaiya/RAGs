@@ -2,16 +2,16 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline, BitsAndB
 from langchain_huggingface import HuggingFacePipeline
 
 def initialize_tokenizer(model_name: str):
-    tokenizer = AutoTokenizer.from_pretrained(model_name, return_token_type_ids=False)
-    tokenizer.bos_token_id = 1  # Set beginning of sentence token id
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     return tokenizer
 
 def load_quantized_model(model_name: str):
     # Example function to load a quantized model (implement as needed)
-    quantization_config = BitsAndBytesConfig()
+    # quantization_config = BitsAndBytesConfig()
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        quantization_config=quantization_config
+        trust_remote_code=True
+        # quantization_config=quantization_config
     )
     return model
 
@@ -31,3 +31,5 @@ def create_pipeline(model_name: str, tokenizer):
         pad_token_id=tokenizer.pad_token_id,
     )
     return HuggingFacePipeline(pipeline=pipe)
+
+

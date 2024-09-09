@@ -92,3 +92,80 @@ Retrievers created successfully.
 Normal Chain generated successfully.
 Hybrid Chain generated successfully.
 BM25 Chain generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: Lstms ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: LSTMs ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: LSTMs ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: LSTMs ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: LSTMs ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: LSTMs ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: LSTMs ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Retrievers created successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Retrievers created successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Retrievers created successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Retrievers created successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Retrievers created successfully.
+Q&A Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: long-Short Term Memory ?
+Retrievers created successfully.
+Q&A Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: long-Short Term Memory ?
+Retrievers created successfully.
+Q&A Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: long-Short Term Memory ?
+Retrievers created successfully.
+Q&A Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: long-Short Term Memory ?
+Retrievers created successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: long-Short Term Memory ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: long-Short Term Memory ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: long-Short Term Memory ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: long-Short Term Memory ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: lstms ?
+Retrievers created successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: How can  recurrent networks  use their feedback connections ?
+Retrievers created successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: How can  recurrent networks  use their feedback connections ?
+Retrievers created successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are long short-term memory (LSTM) ?
+Retrievers created successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are long short-term memory (LSTM) ?
+Retrievers created successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: Lstms ?
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: Lstms ?
+Retrievers created successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: Lstms ?
+Retrievers created successfully.
+Q&A Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are Lstms ? How do they retain long term dependencies ?
+Retrievers created successfully.
+Q&A Chain generated successfully.
+RAG pipeline responses generated successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are Lstms ? How do they retain long term dependencies ?
+Retrievers created successfully.
+Starting RAG pipeline for file: data/raw/LSTM.pdf with query: What are Lstms ? How do they retain long term dependencies ?
+Retrievers created successfully.
+Q&A Chain generated successfully.
+RAG pipeline responses generated successfully.

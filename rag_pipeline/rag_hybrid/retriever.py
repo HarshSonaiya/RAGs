@@ -10,7 +10,7 @@ from uuid import uuid4
 def extract_content_from_pdf(file: str) -> List:
     loader = PyPDFLoader(file)
     docs = loader.load()
-    splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=30)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     chunks = splitter.split_documents(docs)
     return chunks
 
