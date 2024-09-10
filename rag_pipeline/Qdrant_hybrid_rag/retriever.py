@@ -6,22 +6,36 @@ from typing import Dict
 from rag_pipeline.rag_hybrid.retriever import extract_content_from_pdf
 from langchain.chains import ConversationalRetrievalChain,LLMChain
 from qdrant_client import QdrantClient
-from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_community.vectorstores import Qdrant
 from langchain.prompts.prompt import PromptTemplate
 from langchain_groq import ChatGroq
 from langchain.chains.qa_with_sources import load_qa_with_sources_chain
+from transformers import AutoModelForMaskedLM, AutoTokenizer
+
 
 groq_api_key = "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"
-qdrant_api_key = "QKadpncThByWzafBM2pJGJdArqoCoIeq-I9yggJHjuU3XRk1i6RVhg"
-url = "http://localhost:6333"
-model_bm42 = SparseTextEmbedding(model_name="Qdrant/bm42-all-minilm-l6-v2-attentions")
-
-
 
 logger = get_logger("pipeline")
 embedding_model_name = "sentence-transformers/all-mpnet-base-v2"
 
+# Initialize QdrantClient with Docker URL setup
+
+
+model = SparseTextEmbedding(
+    model_name="Qdrant/bm42-all-minilm-l6-v2-attentions",
+)
+
+tokenizer = AutoTokenizer.from_pretrained(embedding_model_name)
+dense_embedding = AutoModelForMaskedLM.from_pretrained(embedding_model_name)
+# delete collection if it exists
+if client.collection_exists("rag"):
+    client.delete_collection("rag")
+
+vector_store = QdrantVectorStore(
+    collection_name="llama2_bm42",
+    client=client,
+    fastembed_sparse_model="Qdrant/bm42-all-minilm-l6-v2-attentions",
+)
 
 async def process_rag_pipeline(file: str, query: str = Form(None)) -> Dict:
 
@@ -33,12 +47,12 @@ async def process_rag_pipeline(file: str, query: str = Form(None)) -> Dict:
         logger.warning("No documents extracted from PDF.")
         return {'message': "Invalid File"}
 
-    embeddings = HuggingFaceEmbeddings(model_name=embedding_model_name)
-
-
     vectorstore = Qdrant.from_documents(documents=documents,
-                                        embedding=embeddings,
-                                        url= url,
+                                        client=client,
+                                        aclient=aclient,
+                                        enable_hybrid=True,
+                                        batch_size=20,
+                                        url= qdrant_url,
                                         prefer_grpc= False,
                                         collection_name="rag",)
 
@@ -59,6 +73,7 @@ async def process_rag_pipeline(file: str, query: str = Form(None)) -> Dict:
     {context}
     =========
     Answer in Markdown:"""
+
     prompt = PromptTemplate(template=template, input_variables=["question", "context"])
 
     llm = ChatGroq(temperature=0, model_name="llama3-8b-8192", api_key= groq_api_key)
