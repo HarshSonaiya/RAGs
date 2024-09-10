@@ -13,7 +13,7 @@ from langchain.chains.qa_with_sources import load_qa_with_sources_chain
 from transformers import AutoModelForMaskedLM, AutoTokenizer
 
 
-groq_api_key = "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"
+groq_api_key = <your-api-key>
 
 logger = get_logger("pipeline")
 embedding_model_name = "sentence-transformers/all-mpnet-base-v2"
