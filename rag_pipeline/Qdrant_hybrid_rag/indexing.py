@@ -9,17 +9,17 @@ from qdrant_client.http.models import SparseVector
 from tqdm import tqdm
 from langchain.schema import Document
 
-
 qdrant_api_key = "QKadpncThByWzafBM2pJGJdArqoCoIeq-I9yggJHjuU3XRk1i6RVhg"
 qdrant_url = "http://localhost:6333"
-# Collection_Name = "rag"
-dense_collection = "rag_dense"
+
+hybrid_collection = "rag_hybrid"
 sparse_collection = "rag_sparse"
+
 dense_embedding_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 sparse_embedding_model = SparseTextEmbedding(model_name="Qdrant/bm42-all-minilm-l6-v2-attentions")
 
 
-def extract_content_from_pdf(file: str) -> List:
+def extract_content_from_pdf(file: str) -> List[Document]:
     """
     Extract and split content from a PDF file into chunks.
 
@@ -27,7 +27,7 @@ def extract_content_from_pdf(file: str) -> List:
         file (str): Path to the PDF file.
 
     Returns:
-        List: A list of A list of dictionaries containing various attributes
+        List: A list of Documents containing various attributes
         like page_content, metadata,etc. extracted from the PDF.
     """
     loader = PyPDFLoader(file)
@@ -37,7 +37,7 @@ def extract_content_from_pdf(file: str) -> List:
     return chunks
 
 
-def create_qdrant_client():
+def create_qdrant_client() -> QdrantClient:
     """
     Create and return a Qdrant client.
 
@@ -46,24 +46,28 @@ def create_qdrant_client():
     """
     return QdrantClient(url=qdrant_url)
 
-def create_dense_collection(client: QdrantClient):
+def create_hybrid_collection(client: QdrantClient):
     """
     Create a collection in Qdrant if it does not exist.
 
     Args:
         client (QdrantClient): An instance of QdrantClient.
     """
-    if not client.collection_exists(collection_name=dense_collection):
+    if not client.collection_exists(collection_name=hybrid_collection):
         client.create_collection(
-            collection_name=dense_collection,
+            collection_name=hybrid_collection,
             vectors_config={
                 'dense': models.VectorParams(
                     size=384,
                     distance=models.Distance.COSINE,
                 )
+            },
+            sparse_vectors_config= {
+                "sparse": models.SparseVectorParams(),
             }
         )
-        logging.info(f"Created dense vector collection '{dense_collection}' in Qdrant.")
+        logging.info(f"Created hybrid collection '{hybrid_collection}' in Qdrant.")
+
 
 def create_sparse_collection(client: QdrantClient):
     """
@@ -96,7 +100,6 @@ def create_sparse_vector(docs: Document, sparse_text_embedding_model) -> SparseV
         SparseVector: A Qdrant SparseVector object.
     """
     embeddings = list(sparse_text_embedding_model.embed([docs.page_content]))[0]
-    logging.debug(f"Sparse embeddings: {embeddings}")
 
     if hasattr(embeddings, 'indices') and hasattr(embeddings, 'values'):
         return SparseVector(
@@ -116,16 +119,12 @@ def create_dense_vector(docs: Document, model: SentenceTransformer) :
         model (SentenceTransformer): An instance of SentenceTransformer.
 
     Returns:
-        List[List[float]]: A list of embeddings, one for each document.
+        List[float]: A list of embeddings, one for each document.
     """
     # Extract page content from documents
-    texts = docs.page_content
+    embeddings = [model.encode(docs.page_content)]
 
-    # Get embeddings for the documents
-    embeddings = model.encode([texts])
-    logging.debug(f"Dense embeddings: {embeddings}")
-
-    return embeddings
+    return embeddings[0].tolist()
 
 def index_documents(file: str):
     """
@@ -140,25 +139,40 @@ def index_documents(file: str):
     # Extract and split PDF content
     documents = extract_content_from_pdf(file)
 
-    # Create Qdrant collection
-    create_dense_collection(client)
+    create_hybrid_collection(client)
     create_sparse_collection(client)
 
     # Index dense embeddings into the dense collection
-    dense_points = []
+    # dense_points = []
+    # for i, doc in enumerate(tqdm(documents, total=len(documents))):
+    #     dense_embedding = create_dense_vector(doc, dense_embedding_model)
+    #     dense_point = models.PointStruct(
+    #         id=i,
+    #         vector={"dense": dense_embedding, "sparse": sparse_embedding}
+    #     )
+    #     dense_points.append(dense_point)
+    #
+    # client.upsert(
+    #     collection_name=dense_collection,
+    #     points=dense_points
+    # )
+    # logging.info(f"Upserted {len(dense_points)} points with dense vectors into Qdrant.")
+
     for i, doc in enumerate(tqdm(documents, total=len(documents))):
         dense_embedding = create_dense_vector(doc, dense_embedding_model)
-        dense_point = models.PointStruct(
-            id=i,
-            vector={"dense":dense_embedding[0]}
-        )
-        dense_points.append(dense_point)
+        sparse_embedding = create_sparse_vector(doc, sparse_embedding_model)
 
-    client.upsert(
-        collection_name=dense_collection,
-        points=dense_points
-    )
-    logging.info(f"Upserted {len(dense_points)} points with dense vectors into Qdrant.")
+        client.upsert(
+            collection_name=hybrid_collection,
+            points=[models.PointStruct(
+                id = i ,
+                vector = {
+                    "dense": dense_embedding,
+                    "sparse": sparse_embedding
+                }
+            )]
+        )
+    logging.info(f"Upserted points with sparse and dense vectors into Qdrant.")
 
     # Index sparse embeddings into the sparse collection
     sparse_points = []
@@ -166,7 +180,8 @@ def index_documents(file: str):
         sparse_vector = create_sparse_vector(doc, sparse_embedding_model)
         sparse_point = models.PointStruct(
             id=i,
-            vector={"sparse":sparse_vector}
+            vector={
+            "sparse":sparse_vector}
         )
         # logging.info(f"Sparse points:{sparse_vector}")
         sparse_points.append(sparse_point)
