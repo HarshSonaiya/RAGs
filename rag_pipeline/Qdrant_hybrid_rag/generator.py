@@ -2,7 +2,7 @@ from langchain import LLMChain
 from langchain.prompts.prompt import PromptTemplate
 from langchain_groq import ChatGroq
 
-groq_api_key = "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"
+groq_api_key = <your-api_key>
 
 
 def create_llm_chain(model_name="llama3-8b-8192"):
