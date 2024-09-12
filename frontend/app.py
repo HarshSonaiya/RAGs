@@ -27,16 +27,17 @@ if st.button("Submit"):
         # Code to send the request to the backend
         with st.spinner("Processing your request..."):
             # Prepare the files for the request
-            files = [("file", (pdf.name, pdf, "application/pdf")) for pdf in uploaded_pdfs]
-            data = {"query": user_query}
-
+            files = []
+            for uploaded_file in uploaded_pdfs:
+                files.append(
+                    ('files', (uploaded_file.name, uploaded_file, 'application/pdf'))
+                )
             try:
                 # Send request to backend
                 response = requests.post(
                     "http://localhost:9000/api/ragas",
                     files=files,
-                    data=data,
-                    enctype="multipart/form-data"
+                    data={"query": user_query},
                 )
                 logger.info("Request sent to FastAPI backend.")
 

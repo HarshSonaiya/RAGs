@@ -13,7 +13,7 @@ app = FastAPI()
 logger = get_logger("server")
 
 @app.post("/api/ragas")
-async def ragas_endpoint(files: List[UploadFile] , query: str = Form(None)):
+async def ragas_endpoint(files: List[UploadFile] = File(...), query: str = Form(...)):
     try :
         for file in files:
             temp_file_path = f"data/raw/{file.filename}"
@@ -24,6 +24,7 @@ async def ragas_endpoint(files: List[UploadFile] , query: str = Form(None)):
 
             with open(temp_file_path, "wb") as temp_file:
                 shutil.copyfileobj(file.file, temp_file)
+
 
             index_documents(temp_file_path)
             # generate_testset(temp_file_path)
