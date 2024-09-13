@@ -2,7 +2,7 @@ from logging_config import get_logger
 from fastapi import FastAPI, File, UploadFile, Form
 from rag_pipeline.Qdrant_hybrid_rag.indexing import index_documents
 from rag_pipeline.Qdrant_hybrid_rag.generator import answer_query
-# from rag_pipeline.evaluator import generate_testset
+from rag_pipeline.evaluator import generate_testset
 from typing import List
 import shutil
 import os
@@ -26,10 +26,12 @@ async def ragas_endpoint(files: List[UploadFile] = File(...), query: str = Form(
                 shutil.copyfileobj(file.file, temp_file)
 
 
-            index_documents(temp_file_path)
+            # index_documents(temp_file_path)
             # generate_testset(temp_file_path)
 
         hybrid_response = answer_query(query)
+        generate_testset(query)
+
         # logger.info("RAG pipeline processing completed successfully.")
 
     except Exception as e:
