@@ -1,6 +1,9 @@
 import logging
+import os
+from dotenv import load_dotenv
 from fastembed import SparseTextEmbedding
 from qdrant_client import QdrantClient, models
+from rag_pipeline.Qdrant_client import create_qdrant_client
 from typing import List
 from sentence_transformers import SentenceTransformer
 from langchain_community.document_loaders import PyPDFLoader
@@ -9,14 +12,15 @@ from qdrant_client.http.models import SparseVector
 from tqdm import tqdm
 from langchain.schema import Document
 
-qdrant_api_key = "QKadpncThByWzafBM2pJGJdArqoCoIeq-I9yggJHjuU3XRk1i6RVhg"
-qdrant_url = "http://localhost:6333"
+load_dotenv()
 
-hybrid_collection = "rag_hybrid"
-sparse_collection = "rag_sparse"
+hybrid_collection = os.getenv("COLLECTION_NAME")
 
-dense_embedding_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-sparse_embedding_model = SparseTextEmbedding(model_name="Qdrant/bm42-all-minilm-l6-v2-attentions")
+dense_model_name = os.getenv("DENSE_MODEL")
+sparse_model_name = os.getenv("SPARSE_MODEL")
+
+dense_embedding_model = SentenceTransformer(dense_model_name)
+sparse_embedding_model = SparseTextEmbedding(model_name=sparse_model_name)
 
 
 def extract_content_from_pdf(file: str) -> List[Document]:
@@ -36,15 +40,6 @@ def extract_content_from_pdf(file: str) -> List[Document]:
     chunks = splitter.split_documents(docs)
     return chunks
 
-
-def create_qdrant_client() -> QdrantClient:
-    """
-    Create and return a Qdrant client.
-
-    Returns:
-        QdrantClient: An instance of QdrantClient.
-    """
-    return QdrantClient(url=qdrant_url)
 
 def create_hybrid_collection(client: QdrantClient):
     """
@@ -67,26 +62,6 @@ def create_hybrid_collection(client: QdrantClient):
             }
         )
         logging.info(f"Created hybrid collection '{hybrid_collection}' in Qdrant.")
-
-
-def create_sparse_collection(client: QdrantClient):
-    """
-    Create a collection for sparse vectors in Qdrant if it does not exist.
-
-    Args:
-        client (QdrantClient): An instance of QdrantClient.
-    """
-    if not client.collection_exists(collection_name=sparse_collection):
-        client.create_collection(
-            collection_name=sparse_collection,
-            vectors_config= {},
-            sparse_vectors_config={
-                "sparse": models.SparseVectorParams(),
-            }
-        )
-
-    logging.info(f"Created sparse vector collection '{sparse_collection}' in Qdrant.")
-
 
 def create_sparse_vector(docs: Document, sparse_text_embedding_model) -> SparseVector:
     """
@@ -140,23 +115,7 @@ def index_documents(file: str):
     documents = extract_content_from_pdf(file)
 
     create_hybrid_collection(client)
-    create_sparse_collection(client)
 
-    # Index dense embeddings into the dense collection
-    # dense_points = []
-    # for i, doc in enumerate(tqdm(documents, total=len(documents))):
-    #     dense_embedding = create_dense_vector(doc, dense_embedding_model)
-    #     dense_point = models.PointStruct(
-    #         id=i,
-    #         vector={"dense": dense_embedding, "sparse": sparse_embedding}
-    #     )
-    #     dense_points.append(dense_point)
-    #
-    # client.upsert(
-    #     collection_name=dense_collection,
-    #     points=dense_points
-    # )
-    # logging.info(f"Upserted {len(dense_points)} points with dense vectors into Qdrant.")
 
     for i, doc in enumerate(tqdm(documents, total=len(documents))):
         dense_embedding = create_dense_vector(doc, dense_embedding_model)
@@ -169,25 +128,13 @@ def index_documents(file: str):
                 vector = {
                     "dense": dense_embedding,
                     "sparse": sparse_embedding
+                },
+                payload={
+                    "content": doc.page_content,
+                    "file_name": os.path.basename(file),
+                    "metadata": doc.metadata
                 }
             )]
         )
-    logging.info(f"Upserted points with sparse and dense vectors into Qdrant.")
+    logging.info(f"Upsert points with sparse and dense vectors into Qdrant.")
 
-    # Index sparse embeddings into the sparse collection
-    sparse_points = []
-    for i, doc in enumerate(tqdm(documents, total=len(documents))):
-        sparse_vector = create_sparse_vector(doc, sparse_embedding_model)
-        sparse_point = models.PointStruct(
-            id=i,
-            vector={
-            "sparse":sparse_vector}
-        )
-        # logging.info(f"Sparse points:{sparse_vector}")
-        sparse_points.append(sparse_point)
-    logging.info(type(sparse_points[0]),len(sparse_points))
-    client.upsert(
-        collection_name=sparse_collection,
-        points=sparse_points
-    )
-    logging.info(f"Upserted {len(sparse_points)} points with sparse vectors into Qdrant.")

@@ -1,0 +1,41 @@
+# Python cache and environment directories
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+env/
+.venv/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# Streamlit specific
+.streamlit/secrets.toml
+
+# FastAPI specific
+data/raw/   # or any directory where temporary or generated files are stored
+
+# Miscellaneous
+*.sqlite3
+*.db
+*.csv
+
+# Dependency directories
+# If you're using pipenv or poetry, add:
+Pipfile.lock
+poetry.lock
