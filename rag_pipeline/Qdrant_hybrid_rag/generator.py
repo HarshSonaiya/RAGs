@@ -1,7 +1,7 @@
 from langchain import LLMChain
 from langchain.prompts.prompt import PromptTemplate
 from langchain_groq import ChatGroq
-from rag_pipeline.Qdrant_hybrid_rag.retriever import hybrid_search
+from rag_pipeline.Qdrant_hybrid_rag.retriever import hybrid_search, search
 import os
 from dotenv import load_dotenv
 
@@ -28,7 +28,7 @@ def create_llm_chain(llm):
     prompt = PromptTemplate(template=template, input_variables=["question", "context"])
     return LLMChain(llm=llm, prompt=prompt)
 
-def answer_query(query: str) -> str:
+def answer_query(query: str):
     print("retrieval begins")
     # Retrieve documents using the hybrid search function
     results = hybrid_search(query)
@@ -40,4 +40,33 @@ def answer_query(query: str) -> str:
     llm_chain = create_llm_chain(llm)
 
     response = llm_chain.invoke({"question": query, "context":combined_context})['text']
-    return response
+    return response, combined_context
+
+def answer_hyde_query(query: str):
+    llm = initialize_llm()
+    llm_chain = create_llm_chain(llm)
+
+    response = llm_chain.invoke({"question": query, "context":""})['text']
+
+    results = hybrid_search(response)
+
+    combined_context = "\n".join([doc.payload.get("content", "") for doc in results["combined_results"]])
+
+    response = llm_chain.invoke({"question": query, "context":combined_context})['text']
+
+    return response, combined_context
+
+
+def answer_dense_query(query: str):
+    print("retrieval begins")
+    # Retrieve documents using the hybrid search function
+    results = search(query)
+    print("retrieval ends")
+    # Combine results into a single context string
+    combined_context = "\n".join([doc.payload.get("content", "") for doc in results["combined_results"]])
+
+    llm = initialize_llm()
+    llm_chain = create_llm_chain(llm)
+
+    response = llm_chain.invoke({"question": query, "context":combined_context})['text']
+    return response, combined_context

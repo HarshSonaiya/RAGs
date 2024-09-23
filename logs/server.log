@@ -5757,3 +5757,1707 @@ Raw response content:
 b'{"status":{"error":"Not found: Collection `rag_hybrid` doesn\'t exist!"},"time":0.000156908}'
 Received file: LSTM.pdf and query: lstms ?
 
+Received file: LSTM.pdf and query: What are LSTMS ?
+An error occurred while processing RAG pipeline: 'LangchainLLMWrapper' object has no attribute 'agenerate_prompt'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 59, in generate_testset
+    testset = generator.generate_with_langchain_docs(pages, 10, distributions)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\generator.py", line 206, in generate_with_langchain_docs
+    self.docstore.add_documents(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 214, in add_documents
+    self.add_nodes(nodes, show_progress=show_progress)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 251, in add_nodes
+    results = executor.results()
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 116, in results
+    results = asyncio.run(_aresults())
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 111, in _aresults
+    r = await future
+        ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 631, in _wait_for_one
+    return f.result()  # May raise f.exception().
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 34, in sema_coro
+    return await coro
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 60, in wrapped_callable_async
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 54, in wrapped_callable_async
+    result = await callable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\extractor.py", line 49, in extract
+    results = await self.llm.generate(prompt=prompt, is_async=is_async)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 98, in generate
+    return await agenerate_text_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 188, in agenerate_text
+    result = await self.langchain_llm.agenerate_prompt(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'LangchainLLMWrapper' object has no attribute 'agenerate_prompt'. Did you mean: 'agenerate_text'?
+Received file: LSTM.pdf and query: What are LSTMS ?
+An error occurred while processing RAG pipeline: 'LangchainLLMWrapper' object has no attribute 'agenerate_prompt'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 59, in generate_testset
+    testset = generator.generate_with_langchain_docs(pages, 10, distributions)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\generator.py", line 206, in generate_with_langchain_docs
+    self.docstore.add_documents(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 214, in add_documents
+    self.add_nodes(nodes, show_progress=show_progress)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 251, in add_nodes
+    results = executor.results()
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 116, in results
+    results = asyncio.run(_aresults())
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 111, in _aresults
+    r = await future
+        ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 631, in _wait_for_one
+    return f.result()  # May raise f.exception().
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 34, in sema_coro
+    return await coro
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 60, in wrapped_callable_async
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 54, in wrapped_callable_async
+    result = await callable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\extractor.py", line 49, in extract
+    results = await self.llm.generate(prompt=prompt, is_async=is_async)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 98, in generate
+    return await agenerate_text_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 188, in agenerate_text
+    result = await self.langchain_llm.agenerate_prompt(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'LangchainLLMWrapper' object has no attribute 'agenerate_prompt'. Did you mean: 'agenerate_text'?
+Received file: LSTM.pdf and query: What are lstms ?
+
+An error occurred while processing RAG pipeline: 1 validation error for OpenAI
+__root__
+  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 30, in generate_testset
+    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.7)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\_api\deprecation.py", line 215, in warn_if_direct_instance
+    return wrapped(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\load\serializable.py", line 113, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\pydantic\v1\main.py", line 341, in __init__
+    raise validation_error
+pydantic.v1.error_wrappers.ValidationError: 1 validation error for OpenAI
+__root__
+  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)
+Received file: LSTM.pdf and query: What are lstms ?
+
+An error occurred while processing RAG pipeline: 1 validation error for OpenAIEmbeddings
+__root__
+  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 29, in generate_testset
+    openai_embedding_model = OpenAIEmbeddings()
+                             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\_api\deprecation.py", line 215, in warn_if_direct_instance
+    return wrapped(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\pydantic\v1\main.py", line 341, in __init__
+    raise validation_error
+pydantic.v1.error_wrappers.ValidationError: 1 validation error for OpenAIEmbeddings
+__root__
+  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)
+Received file: LSTM.pdf and query: What are lstms ?
+
+An error occurred while processing RAG pipeline: AsyncCompletions.create() got an unexpected keyword argument 'api_base'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 70, in generate_testset
+    testset = generator.generate_with_langchain_docs(pages, 10, distributions)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\generator.py", line 206, in generate_with_langchain_docs
+    self.docstore.add_documents(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 214, in add_documents
+    self.add_nodes(nodes, show_progress=show_progress)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 251, in add_nodes
+    results = executor.results()
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 116, in results
+    results = asyncio.run(_aresults())
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 111, in _aresults
+    r = await future
+        ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 631, in _wait_for_one
+    return f.result()  # May raise f.exception().
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 34, in sema_coro
+    return await coro
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 60, in wrapped_callable_async
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 54, in wrapped_callable_async
+    result = await callable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\extractor.py", line 49, in extract
+    results = await self.llm.generate(prompt=prompt, is_async=is_async)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 98, in generate
+    return await agenerate_text_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 188, in agenerate_text
+    result = await self.langchain_llm.agenerate_prompt(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 760, in agenerate_prompt
+    return await self.agenerate(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1183, in agenerate
+    output = await self._agenerate_helper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1023, in _agenerate_helper
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1007, in _agenerate_helper
+    await self._agenerate(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 526, in _agenerate
+    response = await acompletion_with_retry(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 138, in acompletion_with_retry
+    return await llm.async_client.create(**kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_utils\_utils.py", line 274, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: AsyncCompletions.create() got an unexpected keyword argument 'api_base'
+Received file: LSTM.pdf and query: What are lstms ?
+
+An error occurred while processing RAG pipeline: 1 validation error for OpenAI
+__root__
+  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 23, in generate_testset
+    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.7)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\_api\deprecation.py", line 215, in warn_if_direct_instance
+    return wrapped(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\load\serializable.py", line 113, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\pydantic\v1\main.py", line 341, in __init__
+    raise validation_error
+pydantic.v1.error_wrappers.ValidationError: 1 validation error for OpenAI
+__root__
+  Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. (type=value_error)
+Received file: LSTM.pdf and query: What are lstms ?
+
+An error occurred while processing RAG pipeline: Connection error.
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 377, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_async\connection_pool.py", line 167, in handle_async_request
+    raise UnsupportedProtocol(
+httpcore.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1549, in _request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1674, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1702, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1739, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1776, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 376, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 377, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_async\connection_pool.py", line 167, in handle_async_request
+    raise UnsupportedProtocol(
+httpcore.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1549, in _request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1674, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1702, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1739, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1776, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 376, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 377, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_async\connection_pool.py", line 167, in handle_async_request
+    raise UnsupportedProtocol(
+httpcore.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1549, in _request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1674, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1702, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1739, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1776, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 376, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 70, in generate_testset
+    testset = generator.generate_with_langchain_docs(pages, 10, distributions)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\generator.py", line 206, in generate_with_langchain_docs
+    self.docstore.add_documents(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 214, in add_documents
+    self.add_nodes(nodes, show_progress=show_progress)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 251, in add_nodes
+    results = executor.results()
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 116, in results
+    results = asyncio.run(_aresults())
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 111, in _aresults
+    r = await future
+        ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 631, in _wait_for_one
+    return f.result()  # May raise f.exception().
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 34, in sema_coro
+    return await coro
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 60, in wrapped_callable_async
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 54, in wrapped_callable_async
+    result = await callable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\extractor.py", line 49, in extract
+    results = await self.llm.generate(prompt=prompt, is_async=is_async)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 98, in generate
+    return await agenerate_text_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 188, in agenerate_text
+    result = await self.langchain_llm.agenerate_prompt(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 760, in agenerate_prompt
+    return await self.agenerate(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1183, in agenerate
+    output = await self._agenerate_helper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1023, in _agenerate_helper
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1007, in _agenerate_helper
+    await self._agenerate(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 526, in _agenerate
+    response = await acompletion_with_retry(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 138, in acompletion_with_retry
+    return await llm.async_client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\resources\completions.py", line 1059, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1816, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1510, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1573, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1643, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1573, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1643, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1583, in _request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+Received file: LSTM.pdf and query: What are lstms ?
+
+An error occurred while processing RAG pipeline: Connection error.
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 377, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_async\connection_pool.py", line 167, in handle_async_request
+    raise UnsupportedProtocol(
+httpcore.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1549, in _request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1674, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1702, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1739, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1776, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 376, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 377, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_async\connection_pool.py", line 167, in handle_async_request
+    raise UnsupportedProtocol(
+httpcore.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1549, in _request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1674, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1702, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1739, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1776, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 376, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 377, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_async\connection_pool.py", line 167, in handle_async_request
+    raise UnsupportedProtocol(
+httpcore.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1549, in _request
+    response = await self._client.send(
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1674, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1702, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1739, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1776, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 376, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\rag_pipeline\evaluator.py", line 70, in generate_testset
+    testset = generator.generate_with_langchain_docs(pages, 10, distributions)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\generator.py", line 206, in generate_with_langchain_docs
+    self.docstore.add_documents(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 214, in add_documents
+    self.add_nodes(nodes, show_progress=show_progress)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 251, in add_nodes
+    results = executor.results()
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 116, in results
+    results = asyncio.run(_aresults())
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 111, in _aresults
+    r = await future
+        ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 631, in _wait_for_one
+    return f.result()  # May raise f.exception().
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 34, in sema_coro
+    return await coro
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 60, in wrapped_callable_async
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 54, in wrapped_callable_async
+    result = await callable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\extractor.py", line 49, in extract
+    results = await self.llm.generate(prompt=prompt, is_async=is_async)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 98, in generate
+    return await agenerate_text_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 188, in agenerate_text
+    result = await self.langchain_llm.agenerate_prompt(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 760, in agenerate_prompt
+    return await self.agenerate(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1183, in agenerate
+    output = await self._agenerate_helper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1023, in _agenerate_helper
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1007, in _agenerate_helper
+    await self._agenerate(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 526, in _agenerate
+    response = await acompletion_with_retry(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 138, in acompletion_with_retry
+    return await llm.async_client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\resources\completions.py", line 1059, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1816, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1510, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1573, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1643, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1573, in _request
+    return await self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1643, in _retry_request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1583, in _request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+Received file: LSTM.pdf and query: What are lstms ?
+
+An error occurred while processing RAG pipeline: File path /data/LSTM.pdf is not a valid file or url
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\RAGs\rag_pipeline\demo.py", line 23, in generate_testset
+    loader = PyPDFLoader("/data/LSTM.pdf")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\document_loaders\pdf.py", line 241, in __init__
+    super().__init__(file_path, headers=headers)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\document_loaders\pdf.py", line 117, in __init__
+    raise ValueError("File path %s is not a valid file or url" % self.file_path)
+ValueError: File path /data/LSTM.pdf is not a valid file or url
+Received file: LSTM.pdf and query: What are lstms ?
+
+An error occurred while processing RAG pipeline: Error code: 404 - {'error': {'message': 'Unknown request URL: POST /openai/v1/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/', 'type': 'invalid_request_error', 'code': 'unknown_url'}}
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\RAGs\rag_pipeline\demo.py", line 35, in generate_testset
+    testset = generator.generate_with_langchain_docs(pages, 10, distributions)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\generator.py", line 206, in generate_with_langchain_docs
+    self.docstore.add_documents(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 214, in add_documents
+    self.add_nodes(nodes, show_progress=show_progress)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 251, in add_nodes
+    results = executor.results()
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 116, in results
+    results = asyncio.run(_aresults())
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 111, in _aresults
+    r = await future
+        ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 631, in _wait_for_one
+    return f.result()  # May raise f.exception().
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 34, in sema_coro
+    return await coro
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 60, in wrapped_callable_async
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 54, in wrapped_callable_async
+    result = await callable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\extractor.py", line 49, in extract
+    results = await self.llm.generate(prompt=prompt, is_async=is_async)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 98, in generate
+    return await agenerate_text_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 188, in agenerate_text
+    result = await self.langchain_llm.agenerate_prompt(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 760, in agenerate_prompt
+    return await self.agenerate(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1183, in agenerate
+    output = await self._agenerate_helper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1023, in _agenerate_helper
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1007, in _agenerate_helper
+    await self._agenerate(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 526, in _agenerate
+    response = await acompletion_with_retry(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 138, in acompletion_with_retry
+    return await llm.async_client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\resources\completions.py", line 1059, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1816, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1510, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1611, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: Error code: 404 - {'error': {'message': 'Unknown request URL: POST /openai/v1/completions. Please check the URL for typos, or see the docs at https://console.groq.com/docs/', 'type': 'invalid_request_error', 'code': 'unknown_url'}}
+Received file: LSTM.pdf and query: What are lstms ?
+
+An error occurred while processing RAG pipeline: Error code: 400 - {'error': {'message': "property 'prompt' is unsupported, did you mean 'stop'?", 'type': 'invalid_request_error'}}
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 33, in ragas_endpoint
+    generate_testset(query)
+  File "D:\Projects\RAG\RAGs\rag_pipeline\demo.py", line 35, in generate_testset
+    testset = generator.generate_with_langchain_docs(pages, 10, distributions)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\generator.py", line 206, in generate_with_langchain_docs
+    self.docstore.add_documents(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 214, in add_documents
+    self.add_nodes(nodes, show_progress=show_progress)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\docstore.py", line 251, in add_nodes
+    results = executor.results()
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 116, in results
+    results = asyncio.run(_aresults())
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 111, in _aresults
+    r = await future
+        ^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 631, in _wait_for_one
+    return f.result()  # May raise f.exception().
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\harsh\miniconda3\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 34, in sema_coro
+    return await coro
+           ^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 60, in wrapped_callable_async
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\executor.py", line 54, in wrapped_callable_async
+    result = await callable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\testset\extractor.py", line 49, in extract
+    results = await self.llm.generate(prompt=prompt, is_async=is_async)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 98, in generate
+    return await agenerate_text_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 418, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\__init__.py", line 185, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\ragas\llms\base.py", line 188, in agenerate_text
+    result = await self.langchain_llm.agenerate_prompt(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 760, in agenerate_prompt
+    return await self.agenerate(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1183, in agenerate
+    output = await self._agenerate_helper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1023, in _agenerate_helper
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\llms.py", line 1007, in _agenerate_helper
+    await self._agenerate(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 526, in _agenerate
+    response = await acompletion_with_retry(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_community\llms\openai.py", line 138, in acompletion_with_retry
+    return await llm.async_client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\resources\completions.py", line 1059, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1816, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1510, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\openai\_base_client.py", line 1611, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "property 'prompt' is unsupported, did you mean 'stop'?", 'type': 'invalid_request_error'}}
+Received file: LSTM.pdf and query: What are lstms ?
+
+Received file: LSTM.pdf and query: What method does Mozer (1992) use to handle long time lags in neural networks?
+Received file: LSTM.pdf and query: What are LSTMs ? Explain various components of LSTMS .
+RAG pipeline processing completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various components of LSTMs
+
+RAG pipeline processing completed successfully.
+An error occurred while processing RAG pipeline: evaluate_response() missing 1 required positional argument: 'hybrid_response'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 34, in ragas_endpoint
+    evaluation_response = evaluate_response(temp_file_path, retrieved)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: evaluate_response() missing 1 required positional argument: 'hybrid_response'
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various components of LSTMs
+
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS? Explain various components of LSTM
+
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS? Explain various components of LSTM
+
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS? Explain various components of LSTM
+
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS? Explain various components of LSTM
+
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMs ? Explain Various components of LSTMs.
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMs ? Explain Various components of LSTMs.
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMs ? Explain Various components of LSTMs.
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMs ? Explain Various components of LSTMs.
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMs ? Explain Various components of LSTMs.
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMs ? Explain Various components of LSTMs.
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+RAG pipeline processing completed successfully.
+An error occurred while processing RAG pipeline: 'list' object has no attribute 'content'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 34, in ragas_endpoint
+    llm_eval, retriever_eval = evaluate_response(temp_file_path, retrieved, hybrid_response)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\evaluation.py", line 142, in evaluate_response
+    retriever_eval = user.evaluate_retriever(validation_set[0])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\evaluation.py", line 103, in evaluate_retriever
+    response = completion.choices[0].message.content
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'content'
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.[ChatCompletionMessage(content='helpfulness:1.046875,correctness:1.1640625,coherence:2.609375,complexity:1.140625,verbosity:1.21875', refusal=None, role='assistant', function_call=None, tool_calls=None)]
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.[ChatCompletionMessage(content='helpfulness:1.015625,correctness:1.1328125,coherence:2.515625,complexity:1.28125,verbosity:1.359375', refusal=None, role='assistant', function_call=None, tool_calls=None)]
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.[ChatCompletionMessage(content='helpfulness:1.046875,correctness:0.93359375,coherence:2.671875,complexity:1.21875,verbosity:1.1953125', refusal=None, role='assistant', function_call=None, tool_calls=None)]
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+RAG pipeline processing completed successfully.
+Evaluation completed successfully.[ChatCompletionMessage(content='helpfulness:1.0390625,correctness:1.109375,coherence:2.578125,complexity:1.078125,verbosity:1.203125', refusal=None, role='assistant', function_call=None, tool_calls=None)]
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+An error occurred while processing RAG pipeline: Unexpected Response: 400 (Bad Request)
+Raw response content:
+b'{"status":{"error":"Wrong input: Vector params for  are not specified in config"},"time":0.00385551}'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 31, in ragas_endpoint
+    dense_response, dense_retrieved = answer_dense_query(query)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\generator.py", line 48, in answer_dense_query
+    results = search(query)
+              ^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\retriever.py", line 81, in search
+    results = client.query_points(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_client.py", line 560, in query_points
+    return self._client.query_points(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_remote.py", line 702, in query_points
+    query_result = self.http.points_api.query_points(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api\points_api.py", line 1480, in query_points
+    return self._build_for_query_points(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api\points_api.py", line 478, in _build_for_query_points
+    return self.api_client.request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 79, in request
+    return self.send(request, type_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 102, in send
+    raise UnexpectedResponse.for_response(response)
+qdrant_client.http.exceptions.UnexpectedResponse: Unexpected Response: 400 (Bad Request)
+Raw response content:
+b'{"status":{"error":"Wrong input: Vector params for  are not specified in config"},"time":0.00385551}'
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+An error occurred while processing RAG pipeline: Unsupported query type: <class 'qdrant_client.http.models.models.Prefetch'>
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 31, in ragas_endpoint
+    dense_response, dense_retrieved = answer_dense_query(query)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\generator.py", line 48, in answer_dense_query
+    results = search(query)
+              ^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\retriever.py", line 81, in search
+    results = client.query_points(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_client.py", line 558, in query_points
+    query, prefetch = self._resolve_query_to_embedding_embeddings_and_prefetch(query, prefetch)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_fastembed.py", line 578, in _resolve_query_to_embedding_embeddings_and_prefetch
+    query = self._resolve_query_to_embedding_embeddings(query=query)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_fastembed.py", line 646, in _resolve_query_to_embedding_embeddings
+    raise ValueError(f"Unsupported query type: {type(query)}")
+ValueError: Unsupported query type: <class 'qdrant_client.http.models.models.Prefetch'>
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+An error occurred while processing RAG pipeline: Unexpected Response: 404 (Not Found)
+Raw response content:
+b'{"status":{"error":"Not found: Collection `rag_hybrid` doesn\'t exist!"},"time":0.002034197}'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 31, in ragas_endpoint
+    dense_response, dense_retrieved = answer_dense_query(query)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\generator.py", line 48, in answer_dense_query
+    results = search(query)
+              ^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\retriever.py", line 81, in search
+    results = client.query_points(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_client.py", line 560, in query_points
+    return self._client.query_points(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_remote.py", line 702, in query_points
+    query_result = self.http.points_api.query_points(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api\points_api.py", line 1480, in query_points
+    return self._build_for_query_points(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api\points_api.py", line 478, in _build_for_query_points
+    return self.api_client.request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 79, in request
+    return self.send(request, type_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 102, in send
+    raise UnexpectedResponse.for_response(response)
+qdrant_client.http.exceptions.UnexpectedResponse: Unexpected Response: 404 (Not Found)
+Raw response content:
+b'{"status":{"error":"Not found: Collection `rag_hybrid` doesn\'t exist!"},"time":0.002034197}'
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+An error occurred while processing RAG pipeline: Unexpected Response: 400 (Bad Request)
+Raw response content:
+b'{"status":{"error":"Wrong input: Vector params for  are not specified in config"},"time":0.011697994}'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 31, in ragas_endpoint
+    dense_response, dense_retrieved = answer_dense_query(query)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\generator.py", line 48, in answer_dense_query
+    results = search(query)
+              ^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\retriever.py", line 80, in search
+    results = client.query_points(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_client.py", line 560, in query_points
+    return self._client.query_points(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_remote.py", line 702, in query_points
+    query_result = self.http.points_api.query_points(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api\points_api.py", line 1480, in query_points
+    return self._build_for_query_points(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api\points_api.py", line 478, in _build_for_query_points
+    return self.api_client.request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 79, in request
+    return self.send(request, type_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 102, in send
+    raise UnexpectedResponse.for_response(response)
+qdrant_client.http.exceptions.UnexpectedResponse: Unexpected Response: 400 (Bad Request)
+Raw response content:
+b'{"status":{"error":"Wrong input: Vector params for  are not specified in config"},"time":0.011697994}'
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+Hybrid RAG pipeline processing completed successfully.
+Hybrid Evaluation completed successfully.
+An error occurred while processing RAG pipeline: Missing some input keys: {'context'}
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 40, in ragas_endpoint
+    hyde_response, hyde_retrieved = answer_hyde_query(query)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\generator.py", line 49, in answer_hyde_query
+    response = llm_chain.invoke({"question": query})['text']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 164, in invoke
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 152, in invoke
+    self._validate_inputs(inputs)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 282, in _validate_inputs
+    raise ValueError(f"Missing some input keys: {missing_keys}")
+ValueError: Missing some input keys: {'context'}
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+Hybrid RAG pipeline processing completed successfully.
+Hybrid Evaluation completed successfully.
+HyDE RAG pipeline processing completed successfully.
+Hybrid Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+Hybrid RAG pipeline processing completed successfully.
+Hybrid Evaluation completed successfully.
+HyDE RAG pipeline processing completed successfully.
+Hybrid Evaluation completed successfully.
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+An error occurred while processing RAG pipeline: Connection error.
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 236, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 216, in handle_request
+    raise exc from None
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 196, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 99, in handle_request
+    raise exc
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 76, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 122, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_backends\sync.py", line 205, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 972, in _request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 926, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 954, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 991, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1027, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 235, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 34, in ragas_endpoint
+    hybrid_response, retrieved = answer_query(query)
+                                 ^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\generator.py", line 42, in answer_query
+    response = llm_chain.invoke({"question": query, "context":combined_context})['text']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 164, in invoke
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 154, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 777, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 634, in generate
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 624, in generate
+    self._generate_with_cache(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 846, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_groq\chat_models.py", line 472, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\resources\chat\completions.py", line 287, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1244, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 936, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 996, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1073, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 996, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1073, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1006, in _request
+    raise APIConnectionError(request=request) from err
+groq.APIConnectionError: Connection error.
+Received file: LSTM.pdf and query: What are LSTMS ? Explain various componetns
+An error occurred while processing RAG pipeline: Connection error.
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 236, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 216, in handle_request
+    raise exc from None
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 196, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 99, in handle_request
+    raise exc
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 76, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 122, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_backends\sync.py", line 205, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 972, in _request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 926, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 954, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 991, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1027, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 235, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 34, in ragas_endpoint
+    hybrid_response, retrieved = answer_query(query)
+                                 ^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\generator.py", line 42, in answer_query
+    response = llm_chain.invoke({"question": query, "context":combined_context})['text']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 164, in invoke
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 154, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 777, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 634, in generate
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 624, in generate
+    self._generate_with_cache(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 846, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_groq\chat_models.py", line 472, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\resources\chat\completions.py", line 287, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1244, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 936, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 996, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1073, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 996, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1073, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1006, in _request
+    raise APIConnectionError(request=request) from err
+groq.APIConnectionError: Connection error.
+Received file: LSTM.pdf and query: What are LSTMS ? Explain its components 
+An error occurred while processing RAG pipeline: [WinError 10061] No connection could be made because the target machine actively refused it
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 236, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 216, in handle_request
+    raise exc from None
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 196, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 99, in handle_request
+    raise exc
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 76, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 122, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_backends\sync.py", line 205, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 106, in send_inner
+    response = self._client.send(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 926, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 954, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 991, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1027, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 235, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 30, in ragas_endpoint
+    index_documents(temp_file_path)
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\indexing.py", line 113, in index_documents
+    client.delete_collection(collection_name="rag_hybrid")
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_client.py", line 2025, in delete_collection
+    return self._client.delete_collection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\qdrant_remote.py", line 2542, in delete_collection
+    result: Optional[bool] = self.http.collections_api.delete_collection(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 1241, in delete_collection
+    return self._build_for_delete_collection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api\collections_api.py", line 259, in _build_for_delete_collection
+    return self.api_client.request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 79, in request
+    return self.send(request, type_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 96, in send
+    response = self.middleware(request, self.send_inner)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 205, in __call__
+    return call_next(request)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\qdrant_client\http\api_client.py", line 108, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [WinError 10061] No connection could be made because the target machine actively refused it
+Received file: LSTM.pdf and query: What are LSTMS ? Explain its components 
+An error occurred while processing RAG pipeline: Connection error.
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 236, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 216, in handle_request
+    raise exc from None
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 196, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 99, in handle_request
+    raise exc
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 76, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 122, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_backends\sync.py", line 205, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 972, in _request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 926, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 954, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 991, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1027, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 235, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 34, in ragas_endpoint
+    hybrid_response, retrieved = answer_query(query)
+                                 ^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\generator.py", line 42, in answer_query
+    response = llm_chain.invoke({"question": query, "context":combined_context})['text']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 164, in invoke
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 154, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 777, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 634, in generate
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 624, in generate
+    self._generate_with_cache(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 846, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_groq\chat_models.py", line 472, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\resources\chat\completions.py", line 287, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1244, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 936, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 996, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1073, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 996, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1073, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1006, in _request
+    raise APIConnectionError(request=request) from err
+groq.APIConnectionError: Connection error.

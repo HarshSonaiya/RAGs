@@ -1,112 +1,168 @@
-from datasets import Dataset
-from rag_pipeline.Qdrant_hybrid_rag.retriever import hybrid_search
-from rag_pipeline.Qdrant_hybrid_rag.generator import initialize_llm,create_llm_chain
-from ragas import evaluate
-from ragas.metrics import (
-    faithfulness,
-    answer_relevancy,
-    context_recall,
-    context_precision,
-)
-from ragas.llms import BaseRagasLLM, LangchainLLMWrapper
-from ragas.embeddings import BaseRagasEmbeddings, LangchainEmbeddingsWrapper
-import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity, euclidean_distances
-from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
 
-# Function to compute cosine similarity between two vectors
-def compute_cosine_similarity(vec1, vec2):
-    return cosine_similarity([vec1], [vec2])[0][0]
+from RAGs.rag_pipeline.Qdrant_hybrid_rag.indexing import extract_content_from_pdf
 
-# Function to compute Euclidean distance between two vectors
-def compute_euclidean_distance(vec1, vec2):
-    return euclidean_distances([vec1], [vec2])[0][0]
+load_dotenv()
 
-# Function to compute BLEU score between two sentences (ground truth and generated)
-def compute_bleu_score(reference, hypothesis):
-    smoothing_function = SmoothingFunction()
-    return sentence_bleu([reference.split()], hypothesis.split(), smoothing_function=smoothing_function)
+NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
+
+class TestSetGenerator:
+    def __init__(self, api_key):
+        self.client = OpenAI(
+            api_key=api_key,
+            base_url="https://integrate.api.nvidia.com/v1"
+        )
+
+    def create_test_set(self, chunks):
+
+      question_ground_truth_pairs = {}
+
+      for passage in chunks[:5] :
+
+        prompt = f'''
+        You are an AI assistant for generating questions and ground truths based on the various passages from the user.
+        Please generate questions and ground truths clearly labeled as follows:
+            - Questions prefixed with "Q:"
+            - Ground truths (answers) prefixed with "A:"
+        The complexity of the questions should be 2 simple questions and 2 complex questions.
+        Generate at least 4 question-ground_truth pairs based on the passage provided.
+
+        Passage: {passage.page_content}
+        '''
+
+        chat_completion = self.client.chat.completions.create(
+            model="nvidia/nemotron-4-340b-instruct",
+            messages=[{"role":"user","content":prompt}],
+            temperature=0.4,
+            top_p=0.7,
+            max_tokens=1400,
+        )
+
+        response = chat_completion.choices[0].message.content
+
+        # The response contains both questions and ground truths, let's parse them
+        questions = []
+        ground_truths = []
+
+        # Split response by lines, looking for lines prefixed with "Q:" and "A:"
+        response_lines = response.split("\n")
+        for line in response_lines:
+                line = line.strip()
+                if line.startswith("Q:"):  # Question line
+                    question = line.split("Q:", 1)[1].strip()
+                    questions.append(question)
+                elif line.startswith("A:"):  # Ground truth line
+                    ground_truth = line.split("A:", 1)[1].strip()
+                    ground_truths.append(ground_truth)
+
+            # Populate the dictionary with questions as keys and ground truths as values
+        for q, a in zip(questions, ground_truths):
+                question_ground_truth_pairs[q] = a
+
+      return question_ground_truth_pairs
 
 
-def main() :
-    questions = [
-        "What is the main advantage of weight guessing in neural networks?",
-        "How does weight guessing compare to other algorithms for realistic tasks?",
-        "Why does weight guessing become infeasible for certain tasks?",
-        "What capability do Schmidhuber’s hierarchical chunker systems have?",
-        "How does noise affect the performance of chunker systems?",
-        "What advantage does LSTM have over chunker systems in terms of noise?",
-        "What is the purpose of the architecture designed for constant error flow?",
-        "How does the multiplicative input gate unit protect memory contents?",
-        "What is the function of the multiplicative output gate unit?",
-        "How does the new architecture improve upon the naive approach?",
-        "What problems are solved by the gradient-based optimization methods?",
-        "Explain the concept of local predictability in chunker systems.",
-        "What are the key components of the LSTM network?",
-        "Describe the training process of hierarchical chunker systems.",
-        "How do the memory cells in LSTM networks affect learning long-term dependencies?"
-    ]
+    def evaluate_llm(self, validation_set):
 
-    ground_truth = [
-        "The main advantage of weight guessing is that it avoids long-time-lag problems by randomly initializing network weights until the network correctly classifies all training sequences.",
-        "Weight guessing solves many problems faster than algorithms proposed by Bengio et al. (1994) and others but is not ideal for tasks requiring many parameters or high precision.",
-        "Weight guessing becomes infeasible for tasks needing high precision or a large number of parameters, as it does not scale well.",
-        "Schmidhuber’s hierarchical chunker systems can bridge arbitrary time lags if there is local predictability across the subsequences.",
-        "The performance of chunker systems deteriorates with increasing noise levels and less compressible input sequences.",
-        "LSTM handles increasing noise and less compressible sequences better than chunker systems by using gating mechanisms to regulate memory.",
-        "The purpose of the architecture is to allow constant error flow through self-connected units while avoiding the disadvantages of the naive approach.",
-        "The multiplicative input gate unit protects memory contents from irrelevant inputs by controlling how much new information is added to the memory cell.",
-        "The multiplicative output gate unit protects other units from irrelevant memory contents by regulating how much of the memory contents affect the network output.",
-        "The new architecture improves by allowing constant error flow and preventing irrelevant inputs and memory contents from disrupting the network's functioning.",
-        "Gradient-based optimization methods adjust the network weights to minimize loss functions, thus solving problems related to inefficient training.",
-        "Local predictability in chunker systems means that if subsequences have predictable patterns, the system can effectively bridge time lags.",
-        "Key components of the LSTM network include memory cells, input gates, output gates, and forget gates, which help manage long-term dependencies.",
-        "Hierarchical chunker systems are trained using sequences with local predictability to handle time lags, but their performance is affected by noise and sequence compressibility.",
-        "Memory cells in LSTM networks help learning long-term dependencies by storing information over long periods and allowing gradients to flow through these cells without vanishing."
-    ]
-    # answers  = []
-    # contexts = []
+      completion = self.client.chat.completions.create(
+          model="nvidia/nemotron-4-340b-reward",
+          messages=[
+              {"role":"user",
+               "content": f"""
+               user_query: {validation_set["question"]} Based on the below context answer the users query
+               context: {validation_set["retrieved_docs"]}
+               Expected Answer:{validation_set["ground_truth"]}
+              """
+              },
+              {"role":"assistant",
+               "content":validation_set["llm_response"]
+               }
+            ],
+          )
+      response = completion.choices[0].message
+      return response
 
-    llm = initialize_llm()
-    llm_chain = create_llm_chain(llm)
+    def evaluate_retriever(self, validation_set):
 
-    generated_answers = []  # Store generated answers from your LLM chain
-    retrieved_contexts = []  # Store contexts from Qdrant hybrid search
-    qdrant_embeddings = []  # Store the embeddings for retrieved contexts
-    generated_embeddings = []  # Store embeddings for generated answers
+      completion = self.client.chat.completions.create(
+          model="nvidia/nemotron-4-340b-reward",
+          messages=[
+              {"role":"user",
+               "content": f"""
+               Question: {validation_set["question"]}
+               Expected Answer: {validation_set["ground_truth"]}
+               """
+              },
+              {"role":"assistant",
+               "content":validation_set["retrieved_docs"]
+              }
+            ]
+          )
+      response = completion.choices[0].message
+      return response
 
-    # traversing each question and passing into the chain to get answer from the system
-    for question in questions:
-        results = hybrid_search(question)
-        combined_context = "\n".join([doc.payload.get("content", "") for doc in results["combined_results"]])
-        answers.append(llm_chain.invoke({"question": question, "context": combined_context})['text'])
-        contexts.append([combined_context])
+    def generate_ground_truth(self,query:str):
+
+        prompt = f'''
+        You are an AI assistant for generating ground truth based on the user query and your knowledge.
+        Please ground truths clearly labeled as follows:
+            - Ground truths (answers) prefixed with "A:"
+    
+        Query: {query}
+        '''
+
+        chat_completion = self.client.chat.completions.create(
+            model="nvidia/nemotron-4-340b-instruct",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.4,
+            top_p=0.7,
+            max_tokens=1400,
+        )
+
+        response = chat_completion.choices[0].message.content
+
+        return response
+
+
+def evaluate_response(retrieved: str, query: str, hybrid_response):
+
+    user = TestSetGenerator(api_key=NVIDIA_API_KEY)
+    ground_truth = user.generate_ground_truth(query)
+
+    validation_set = [{
+        "question": query,
+        "ground_truth": ground_truth,
+        "retrieved_docs": retrieved,
+        "llm_response": hybrid_response
+    }]
+
+    llm_eval = user.evaluate_llm(validation_set[0])
+    retriever_eval = user.evaluate_retriever(validation_set[0])
+    print("Retriever_eval", retriever_eval)
+    return llm_eval, retriever_eval
+
+    # Store in validation set
+
+    # chunks = extract_content_from_pdf(file)
+    # test_set = user.create_test_set(chunks)
     #
-    # data = {
-    #     "question": questions,
-    #     "answer": answers,
-    #     "contexts": contexts,
-    #     "ground_truth": ground_truth
-    # }
-    # dataset = Dataset.from_dict(data)
+    # print(test_set[0])
+    # validation_set = []
     #
-    # faithfulness.llm = llm
-    # answer_relevancy.llm = llm
-    # context_recall.llm = llm
-    # context_precision.llm = llm
+    # for question, ground_truth in test_set.items():
+    #     user_query = query
+    #     llm_response = "Mozer (1992) uses time constants to handle long time lags in neural networks."  # Example LLM response
     #
-    # result = evaluate(
-    #     dataset=dataset,
-    #     metrics=[
-    #         context_precision,
-    #         context_recall,
-    #         faithfulness,
-    #         answer_relevancy,
-    #     ]
-    # )
+    #     # Store in validation set
+    #     validation_set.append({
+    #         "question": question,
+    #         "ground_truth": ground_truth,
+    #         "retrieved_docs": retrieved,
+    #         "llm_response": llm_response
+    #     })
     #
-    # df = result.to_pandas()
-    # print(df)
+    # # Now `validation_set` contains the structured data
+    # print(validation_set)
 
-if __name__ == "__main__":
-    main()

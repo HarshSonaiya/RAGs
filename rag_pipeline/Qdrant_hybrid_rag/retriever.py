@@ -6,6 +6,7 @@ from sentence_transformers import SentenceTransformer
 from qdrant_client.http import models
 from rag_pipeline.Qdrant_client import create_qdrant_client
 
+
 load_dotenv()
 
 Qdrant_API_KEY = os.getenv('QDRANT_API_KEY')
@@ -69,5 +70,23 @@ def hybrid_search(query, limit= 5):
     return {
         # "sparse_results": sparse_documents,
         # "dense_results": dense_documents,
+        "combined_results":documents
+    }
+
+def search(query, limit= 5):
+
+    client = create_qdrant_client()
+    dense_query = list(dense_embedding_model.encode(query))
+
+    # Perform the search
+    results = client.query_points(
+        collection_name=Collection_Name,
+        query= dense_query,
+        limit = limit
+    )
+
+    documents = [point for point in results.points]
+
+    return {
         "combined_results":documents
     }

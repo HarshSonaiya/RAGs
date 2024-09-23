@@ -110,6 +110,7 @@ def index_documents(file: str):
     """
     # Initialize client and embedding models
     client = create_qdrant_client()
+    client.delete_collection(collection_name="rag_hybrid")
 
     # Extract and split PDF content
     documents = extract_content_from_pdf(file)

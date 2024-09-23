@@ -35,7 +35,7 @@ if st.button("Submit"):
             try:
                 # Send request to backend
                 response = requests.post(
-                    "http://localhost:9000/api/ragas",
+                    "http://localhost:9000/api/rag",
                     files=files,
                     data={"query": user_query},
                 )
@@ -46,10 +46,39 @@ if st.button("Submit"):
                     results = response.json()
                     logger.info("Successful response received from FastAPI backend.")
 
+                    print(results)
+
                     result_hybrid = results.get("hybrid_response", "No hybrid retriever response")
+                    hybrid_llm_eval = results.get("hybrid_llm_eval","No Response")
+                    retriever_llm_eval = results.get("hybrid_retriever_eval","No Response")
+
+                    result_hyde = results.get("hybrid_response", "No hybrid retriever response")
+                    hyde_llm_eval = results.get("hybrid_llm_eval","No Response")
+                    hyde_retriever_llm_eval = results.get("hybrid_retriever_eval","No Response")
 
                     st.subheader("Response from Hybrid Retriever")
                     st.write(result_hybrid)
+                    st.subheader("Evaluation of Hybrid Retriever Response")
+                    st.subheader("LLM Evaluation")
+                    st.write(hybrid_llm_eval[0]["content"])
+
+                    st.subheader("Retriever Evaluation")
+                    st.write(retriever_llm_eval[0]["content"])
+
+                    st.subheader("Response from HyDE Retriever")
+                    st.write(result_hyde)
+                    st.subheader("Evaluation of HyDE Retriever Response")
+                    st.subheader("LLM Evaluation")
+                    st.write(hyde_llm_eval[0]["content"])
+
+                    st.subheader("Retriever Evaluation")
+                    st.write(hyde_retriever_llm_eval[0]["content"])
+
+                    st.write("Helpfulness measures how useful or beneficial the response is to the user.")
+                    st.write("Correctness evaluates the accuracy and factual consistency of the response.")
+                    st.write("Coherence assesses how well the response flows logically and maintains consistency in its ideas and language.")
+                    st.write("Complexity indicates the level of difficulty or sophistication in the language and ideas presented in the response.")
+                    st.write("Verbosity measures the length or wordiness of the response.")
 
                 else:
                     st.error(f"Error: {response.status_code} - {response.text}")
