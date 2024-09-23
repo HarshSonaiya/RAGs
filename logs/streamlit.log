@@ -2796,3 +2796,11 @@ Traceback (most recent call last):
     st.write(hybrid_llm_eval[0]["content"])
              ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
 TypeError: string indices must be integers, not 'str'
+Request sent to FastAPI backend.
+Successful response received from FastAPI backend.
+An error occurred: string indices must be integers, not 'str'
+Traceback (most recent call last):
+  File "D:\Projects\RAG\frontend\app.py", line 63, in <module>
+    st.write(hybrid_llm_eval[0]["content"])
+             ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'

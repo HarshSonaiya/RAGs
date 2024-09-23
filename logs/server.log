@@ -7461,3 +7461,114 @@ Traceback (most recent call last):
   File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1006, in _request
     raise APIConnectionError(request=request) from err
 groq.APIConnectionError: Connection error.
+Received file: LSTM.pdf and query: What are LSTMs ? Explain its components.
+An error occurred while processing RAG pipeline: Connection error.
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 72, in map_httpcore_exceptions
+    yield
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 236, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 216, in handle_request
+    raise exc from None
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 196, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 99, in handle_request
+    raise exc
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 76, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_sync\connection.py", line 122, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_backends\sync.py", line 205, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 972, in _request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 926, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 954, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 991, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_client.py", line 1027, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 235, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\harsh\miniconda3\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\httpx\_transports\default.py", line 89, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\RAG\backend\server.py", line 34, in ragas_endpoint
+    hybrid_response, retrieved = answer_query(query)
+                                 ^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\RAG\rag_pipeline\Qdrant_hybrid_rag\generator.py", line 42, in answer_query
+    response = llm_chain.invoke({"question": query, "context":combined_context})['text']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 164, in invoke
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\base.py", line 154, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain\chains\llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 777, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 634, in generate
+    raise e
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 624, in generate
+    self._generate_with_cache(
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_core\language_models\chat_models.py", line 846, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\langchain_groq\chat_models.py", line 472, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\resources\chat\completions.py", line 287, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1244, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 936, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 996, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1073, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 996, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1073, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\harsh\miniconda3\Lib\site-packages\groq\_base_client.py", line 1006, in _request
+    raise APIConnectionError(request=request) from err
+groq.APIConnectionError: Connection error.
